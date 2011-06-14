@@ -28,6 +28,14 @@ describe 'Kaminari::Helpers::Paginator' do
     it { should == :pagina }
   end
 
+  describe "explicit url" do
+    before do
+      @paginator = Paginator.new(template, :url => "/i/am/crazy")
+    end
+    subject { @paginator.page_tag(template).instance_variable_get('@url') }        
+    it { should == '/i/am/crazy' }
+  end
+
   #TODO test somehow...
 #   describe '#tagify_links' do
 #     def tags_with(options)

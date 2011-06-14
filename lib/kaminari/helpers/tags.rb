@@ -26,14 +26,11 @@ module Kaminari
       end
 
       def page_url_for(page)
-        params = @params.merge(@param_name => (page <= 1 ? nil : page))
-        if @url.nil?
-          @template.url_for(params)
-        else
-          # don't need :controller/:action keys for the url if we pass the url
-          params.delete_if { |k,v| [:controller, :action].include? k }
-          (@url + "?" + params.to_query)
-        end
+        # url will ignore params hash. pass params in the url itself.
+
+        @url.nil? ?
+          @template.url_for(@params.merge(@param_name => (page <= 1 ? nil : page))) :
+          (@url + "?#{@param_name}=#{page <= 1 ? nil : page}")
       end
     end
 
