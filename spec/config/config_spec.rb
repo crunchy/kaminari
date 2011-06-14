@@ -41,6 +41,12 @@ describe Kaminari::Configuration do
     end
   end
 
+  describe 'url' do
+    context 'by default' do
+      its(:url) { should == :url_for }
+    end
+  end
+  
   describe 'param_name' do
     context 'by default' do
       its(:param_name) { should == :page }

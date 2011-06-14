@@ -26,11 +26,7 @@ module Kaminari
       end
 
       def page_url_for(page)
-        # url will ignore params hash. pass params in the url itself.
-
-        @url.nil? ?
-          @template.url_for(@params.merge(@param_name => (page <= 1 ? nil : page))) :
-          (@url + "?#{@param_name}=#{page <= 1 ? nil : page}")
+        @template.send(@url, @params.merge(@param_name => (page <= 1 ? nil : page)))
       end
     end
 

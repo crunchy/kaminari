@@ -28,12 +28,12 @@ describe 'Kaminari::Helpers::Paginator' do
     it { should == :pagina }
   end
 
-  describe "explicit url" do
+  describe '#url' do
     before do
-      @paginator = Paginator.new(template, :url => "/i/am/crazy")
+      @paginator = Paginator.new(template, :url => :users_path)
     end
-    subject { @paginator.page_tag(template).instance_variable_get('@url') }        
-    it { should == '/i/am/crazy' }
+    subject { @paginator.page_tag(template).instance_variable_get('@url') }
+    it { should == :users_path }
   end
 
   #TODO test somehow...
