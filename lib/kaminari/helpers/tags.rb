@@ -16,6 +16,7 @@ module Kaminari
       def initialize(template, options = {}) #:nodoc:
         @template, @options = template, options.dup
         @param_name = @options.delete(:param_name)
+        @url = @options.delete(:url) 
         @theme = @options[:theme] ? "#{@options.delete(:theme)}/" : ''
         @params = @options[:params] ? template.params.merge(@options.delete :params) : template.params
       end
@@ -25,7 +26,14 @@ module Kaminari
       end
 
       def page_url_for(page)
-        @template.url_for @params.merge(@param_name => (page <= 1 ? nil : page))
+        params = @params.merge(@param_name => (page <= 1 ? nil : page))
+        if @url.nil?
+          @template.url_for(params)
+        else
+          # don't need :controller/:action keys for the url if we pass the url
+          params.delete_if { |k,v| [:controller, :action].include? k }
+          (@url + "?" + params.to_query)
+        end
       end
     end
 
