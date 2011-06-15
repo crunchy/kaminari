@@ -16,7 +16,7 @@ module Kaminari
       def initialize(template, options = {}) #:nodoc:
         @template, @options = template, options.dup
         @param_name = @options.delete(:param_name)
-        @url = @options.delete(:url) 
+        @url = @options.delete(:url) || Kaminari.config.url
         @theme = @options[:theme] ? "#{@options.delete(:theme)}/" : ''
         @params = @options[:params] ? template.params.merge(@options.delete :params) : template.params
       end
