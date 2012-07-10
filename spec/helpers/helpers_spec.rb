@@ -1,4 +1,4 @@
-require File.expand_path('../spec_helper', File.dirname(__FILE__))
+require 'spec_helper'
 include Kaminari::Helpers
 
 describe 'Kaminari::Helpers::Paginator' do
@@ -43,13 +43,13 @@ describe 'Kaminari::Helpers::Paginator' do
 #     end
 
 #     context '1 page in total' do
-#       subject { tags_with :num_pages => 1, :current_page => 1 }
+#       subject { tags_with :total_pages => 1, :current_page => 1 }
 #       it { should have(0).tags }
 #     end
 
 #     context '10 pages in total' do
 #       context 'first page' do
-#         subject { tags_with :num_pages => 10, :current_page => 1 }
+#         subject { tags_with :total_pages => 10, :current_page => 1 }
 #         it { should_not contain_tag PrevLink }
 #         it { should contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -62,7 +62,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'second page' do
-#         subject { tags_with :num_pages => 10, :current_page => 2 }
+#         subject { tags_with :total_pages => 10, :current_page => 2 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -75,7 +75,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'third page' do
-#         subject { tags_with :num_pages => 10, :current_page => 3 }
+#         subject { tags_with :total_pages => 10, :current_page => 3 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -88,7 +88,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'fourth page(no truncation)' do
-#         subject { tags_with :num_pages => 10, :current_page => 4 }
+#         subject { tags_with :total_pages => 10, :current_page => 4 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -101,7 +101,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'seventh page(no truncation)' do
-#         subject { tags_with :num_pages => 10, :current_page => 7 }
+#         subject { tags_with :total_pages => 10, :current_page => 7 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -114,7 +114,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'eighth page' do
-#         subject { tags_with :num_pages => 10, :current_page => 8 }
+#         subject { tags_with :total_pages => 10, :current_page => 8 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }
@@ -127,7 +127,7 @@ describe 'Kaminari::Helpers::Paginator' do
 #       end
 
 #       context 'last page' do
-#         subject { tags_with :num_pages => 10, :current_page => 10 }
+#         subject { tags_with :total_pages => 10, :current_page => 10 }
 #         it { should contain_tag PrevLink }
 #         it { should_not contain_tag PrevSpan }
 #         it { should contain_tag CurrentPage }

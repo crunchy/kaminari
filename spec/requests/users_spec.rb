@@ -1,12 +1,12 @@
 # encoding: UTF-8
-require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+require 'spec_helper'
 
 feature 'Users' do
   background do
     1.upto(100) {|i| User.create! :name => "user#{'%03d' % i}" }
   end
   scenario 'navigating by pagination links' do
-    visit users_path
+    visit '/users'
 
     within 'nav.pagination' do
       within 'span.page.current' do
